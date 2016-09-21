@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 module.exports = {
   entry: [
     './src/index.js'
@@ -7,14 +9,29 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js'
   },
+  plugins: [
+    new webpack.NoErrorsPlugin()
+    // new webpack.optimize.OccurenceOrderPlugin(),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compressor: {
+    //     warnings: false
+    //   }
+    // })
+  ],
   module: {
-    loaders: [{
+    loaders: [
+      {
       exclude: /node_modules/,
       loader: 'babel',
       query: {
         presets: ['react', 'es2015', 'stage-1']
       }
-    }]
+    },
+    {
+      test: /\.css$/,
+      loader: 'style-loader!css-loader'
+    }
+    ]
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
