@@ -12,7 +12,7 @@ import reducers from './reducers';
 const createStoreWithMiddleware = applyMiddleware(thunk, promise)(createStore);
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={createStoreWithMiddleware(reducers, window.devToolsExtension ? window.devToolsExtension() : f => f)}>
     <Router history={browserHistory} routes={routes} />
   </Provider>
   , document.querySelector('.container'));
