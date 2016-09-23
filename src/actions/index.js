@@ -1,4 +1,4 @@
-import { FETCH_MENU, IS_ACTIVE } from './types';
+import { FETCH_MENU, IS_ACTIVE} from './types';
 
 import menu from '../data/menu';
 

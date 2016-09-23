@@ -12,9 +12,10 @@ import List from '../list';
 
   render() {
     const { menu } = this.props;
+    const { isActive } = this.props;
     return (
       <div>
-        <List  menu={menu} />
+        <List  menu={ menu } isActive={ isActive }/>
         {this.props.children}
       </div>
     );
@@ -23,7 +24,8 @@ import List from '../list';
 
 function mapStateToProps(state){
   return {
-    menu: state.menu
+    menu: state.menu,
+    isActive: state.isActive
   };
 }
 

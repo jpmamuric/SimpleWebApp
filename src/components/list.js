@@ -14,11 +14,11 @@ const styles = {
 
 
 export default class List extends Component {
-renderItems() {
-  return this.props.menu.map(item => {
-    return <Item key={item.id} item={item}/>
-  });
-}
+  renderItems() {
+    return this.props.menu.map(item => {
+      return <Item key={item.id} item={item} />
+    });
+  }
 
   render() {
     return (
