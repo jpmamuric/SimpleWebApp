@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
+import { GridList }         from 'material-ui/GridList';
+
+import Item                 from './item';
 // require("../style/style.css");
-import Item from './item';
+
+const styles = {
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+  }
+};
+
 
 export default class List extends Component {
 renderItems() {
@@ -11,10 +22,12 @@ renderItems() {
 
   render() {
     return (
-      <div>
-        <ul>
+      <div style={styles.root} >
+        <GridList
+          cols={3}
+          >
           {this.renderItems()}
-        </ul>
+        </GridList>
       </div>
     );
   }

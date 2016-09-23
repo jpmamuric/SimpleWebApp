@@ -4,11 +4,21 @@ import { connect }          from 'react-redux';
 import * as actions         from '../actions/index';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MuiThemeProvider     from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme          from 'material-ui/styles/getMuiTheme';
+import { cyanA100 }          from 'material-ui/styles/colors';
 import AppBar               from 'material-ui/AppBar';
 import Drawer               from 'material-ui/Drawer';
 
 injectTapEventPlugin();
 // require("../style/style.css");
+
+const muiTheme = getMuiTheme({
+
+  appBar: {
+    height: 100,
+    color: cyanA100
+  }
+});
 
  class App extends Component {
   openSideNav() {
@@ -21,7 +31,7 @@ injectTapEventPlugin();
 
   render() {
     return (
-      <MuiThemeProvider>
+      <MuiThemeProvider muiTheme={muiTheme}>
         <div>
           <div>
             <AppBar
@@ -35,7 +45,7 @@ injectTapEventPlugin();
           {this.props.children}
           <Drawer
             docked={false}
-            width={300}
+            width={450}
             open={this.props.isActive}
             onRequestChange={()=>this.closeSideNav()}
             >

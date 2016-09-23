@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions/index';
+import * as actions from '../../actions/index';
 // require("../style/style.css");
 
-import List from './list';
+import List from '../list';
 
  class Menu extends Component {
   componentWillMount() {
@@ -15,6 +15,7 @@ import List from './list';
     return (
       <div>
         <List  menu={menu} />
+        {this.props.children}
       </div>
     );
   }
