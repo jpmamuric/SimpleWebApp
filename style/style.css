@@ -1,0 +1,24 @@
+.tile:hover,
+.tile:active,
+.tile.active,
+.tile:focus,
+.tile:active:focus,
+.tile.active:focus {
+  -webkit-box-shadow: 0px 25px 95px -5px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 25px 95px -5px rgba(0,0,0,0.75);
+  box-shadow: 0px 25px 95px -5px rgba(0,0,0,0.75);
+  -webkit-transform:scale(1.1);
+  -moz-transform:scale(1.1);
+  -ms-transform:scale(1.1);
+  -o-transform:scale(1.1);
+  transform:scale(1.1);
+  z-index: 1000;
+}
+
+.tile {
+  -webkit-transition:all 0.5s ease-out;
+  -moz-transition:all 0.5s ease-out;
+  -ms-transition:all 0.5s ease-out;
+  -o-transition:all 0.5s ease-out;
+  transition:all 0.5s ease-out;
+}

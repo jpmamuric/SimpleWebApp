@@ -1,26 +1,42 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link }             from 'react-router';
 import { connect }          from 'react-redux';
 import * as actions         from '../actions/index';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+
 import MuiThemeProvider     from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme          from 'material-ui/styles/getMuiTheme';
-import { cyanA100 }          from 'material-ui/styles/colors';
 import AppBar               from 'material-ui/AppBar';
 import Drawer               from 'material-ui/Drawer';
+import {Tabs, Tab}          from 'material-ui/Tabs';
+import {
+  cyanA100,
+  yellowA100 }              from 'material-ui/styles/colors';
 
 injectTapEventPlugin();
 // require("../style/style.css");
 
 const muiTheme = getMuiTheme({
-
   appBar: {
     height: 100,
     color: cyanA100
   }
 });
 
+const inkBarStyle = {
+  background : yellowA100,
+  height: 5
+};
+
  class App extends Component {
+   static contextTypes = {
+      router: React.PropTypes.object
+    }
+
+   componentWillMount() {
+     this.props.fetchMenu();
+   }
+
   openSideNav() {
     this.props.setState(true);
   }
@@ -29,7 +45,16 @@ const muiTheme = getMuiTheme({
     this.props.setState(false);
   }
 
+  routeHome(){
+    this.context.router.push('/');
+  }
+
+  routeMenu(){
+    this.context.router.push('/menu');
+  }
+
   render() {
+    const { menu } = this.props;
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
@@ -39,8 +64,13 @@ const muiTheme = getMuiTheme({
               onLeftIconButtonTouchTap={()=>this.openSideNav()}
               iconClassNameRight="muidocs-icon-navigation-expand-more"
               />
-            <Link to='/'>Home</Link>
-            <Link to='/menu'>Menu</Link>
+
+            <Tabs inkBarStyle={inkBarStyle} contentContainerStyle={{background: '#FFF'}}>
+              <Tab label="Home" onClick={()=>this.routeHome()}></Tab>
+              <Tab label="Menu" onClick={()=>this.routeMenu()}></Tab>
+              <Tab label="Location"></Tab>
+              <Tab label="Contact"></Tab>
+            </Tabs>
           </div>
           {this.props.children}
           <Drawer
@@ -49,7 +79,8 @@ const muiTheme = getMuiTheme({
             open={this.props.isActive}
             onRequestChange={()=>this.closeSideNav()}
             >
-            Drawer
+            <Link to='/' onClick={()=>this.closeSideNav()}>Home</Link>
+            <Link to='/menu' onClick={()=>this.closeSideNav()}>Menu</Link>
         </Drawer>
         </div>
       </MuiThemeProvider>
@@ -60,7 +91,8 @@ const muiTheme = getMuiTheme({
 
 function mapStateToProps(state) {
   return {
-    isActive: state.isActive
+    isActive: state.isActive,
+    menu: state.menu
   };
 }
 
