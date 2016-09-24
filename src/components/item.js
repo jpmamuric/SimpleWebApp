@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
-import { Link }             from 'react-router';
+import { connect }          from 'react-redux';
 import { GridTile }         from 'material-ui/GridList';
+import * as actions         from '../actions/index';
 require("../../style/style.css");
 
 
-export default class Item extends Component {
+class Item extends Component {
   render() {
+    const { item } = this.props;
     const { name, id, url, featured } = this.props.item;
     return (
-      <Link to={`/menu/${id}`}>
         <GridTile
-           className="tile"
+          className="tile"
           rows={featured ? 2 : 1}
           cols={featured ? 2 : 1}
+          onClick={()=>this.props.getItem(item)}
         >
           <img src={url}/>
         </GridTile>
-      </Link>
     );
   }
 }
+
+export default connect(null, actions)(Item);
 
 //pop, description in a box on the side , blur out back ground, click to open and arrow pointing from description

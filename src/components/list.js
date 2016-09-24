@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { GridList }         from 'material-ui/GridList';
 
+import Popover from 'material-ui/Popover';
 import Item                 from './item';
 // require("../style/style.css");
 

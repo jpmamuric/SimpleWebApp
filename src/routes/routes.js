@@ -9,7 +9,6 @@ import Detail from '../components/details';
 export default (
   <Route path="/" component={ App } >
     <IndexRoute component={ Welcome } />
-    <Route path="/menu" component={ Menu }/>
-    <Route path="/menu/:id" component={ Detail }/>
+    <Route path="/menu" component={ Menu } />
   </Route>
 );

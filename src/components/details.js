@@ -1,17 +1,31 @@
 import React , { Component } from 'react';
+import { connect }           from 'react-redux';
 import { browserHistory }    from 'react-router';
 
-export default class Detail extends Component {
-  routeBack() {
-    browserHistory.push('/menu');
-  }
-
-  render(){
+class Detail extends Component {
+  renderOnSelected () {
+    const { name, description } = this.props.selectedItem;
+    if(!this.props.selectedItem){
+      return <div> image goes here </div>
+    }
     return (
       <div>
-        <button onClick={()=>this.routeBack()}> Back </button>
-        {this.props.params.id}
+        <h2>Fire Grilled for your tastes</h2>
+        <h1>{name}</h1>
+        <p>{description}</p>
       </div>
     );
   }
+
+  render(){
+      return <div>{this.renderOnSelected()}</div>
+  }
 }
+
+function mapStateToProps(state){
+  return {
+    selectedItem: state.selectedItem
+  };
+}
+
+export default connect(mapStateToProps)(Detail);

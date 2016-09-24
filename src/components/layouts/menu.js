@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as actions from '../../actions/index';
+import { connect }          from 'react-redux';
+import * as actions         from '../../actions/index';
 // require("../style/style.css");
 
-import List from '../list';
+import List                 from '../list';
+import Detail               from '../details';
 
  class Menu extends Component {
   componentWillMount() {
@@ -12,11 +13,12 @@ import List from '../list';
 
   render() {
     const { menu } = this.props;
-    const { isActive } = this.props;
     return (
       <div>
-        <List  menu={ menu } isActive={ isActive }/>
-        {this.props.children}
+        <div className='row'>
+        <div className="col-md-8"><List  menu={ menu } /></div>
+        <div className="col-md-4"><Detail /></div>
+        </div>
       </div>
     );
   }
@@ -24,8 +26,7 @@ import List from '../list';
 
 function mapStateToProps(state){
   return {
-    menu: state.menu,
-    isActive: state.isActive
+    menu: state.menu
   };
 }
 
