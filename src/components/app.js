@@ -29,6 +29,10 @@ const inkBarStyle = {
 };
 
  class App extends Component {
+   state = {
+     open: false
+   };
+
    static contextTypes = {
       router: React.PropTypes.object
     }
@@ -36,14 +40,6 @@ const inkBarStyle = {
    componentWillMount() {
      this.props.fetchMenu();
    }
-
-  openSideNav() {
-    this.props.setState(true);
-  }
-
-  closeSideNav(){
-    this.props.setState(false);
-  }
 
   routeHome(){
     this.context.router.push('/');
@@ -61,7 +57,6 @@ const inkBarStyle = {
           <div>
             <AppBar
               title="Pampanga Master Grill"
-              onLeftIconButtonTouchTap={()=>this.openSideNav()}
               iconClassNameRight="muidocs-icon-navigation-expand-more"
               />
 
@@ -76,7 +71,7 @@ const inkBarStyle = {
           <Drawer
             docked={false}
             width={450}
-            open={this.props.isActive}
+            open={this.state.open}
             onRequestChange={()=>this.closeSideNav()}
             >
             <Link to='/' onClick={()=>this.closeSideNav()}>Home</Link>
@@ -91,7 +86,6 @@ const inkBarStyle = {
 
 function mapStateToProps(state) {
   return {
-    isActive: state.isActive,
     menu: state.menu
   };
 }

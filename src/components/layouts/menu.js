@@ -5,20 +5,42 @@ import * as actions         from '../../actions/index';
 
 import List                 from '../list';
 import Detail               from '../details';
+import Dialog               from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
 
  class Menu extends Component {
   componentWillMount() {
     this.props.fetchMenu();
   }
 
+  closeModal(){
+    this.props.setState(false);
+  }
+
   render() {
-    const { menu } = this.props;
+    const { menu, isActive} = this.props;
+    const actions = [
+      <FlatButton
+        label="Cancel"
+        primary={true}
+        onTouchTap={()=>this.closeModal()}
+      />
+    ];
     return (
       <div>
         <div className='row'>
-        <div className="col-md-8"><List  menu={ menu } /></div>
-        <div className="col-md-4"><Detail /></div>
+          <div className="col-md-8"><List  menu={ menu } /></div>
+          <div className="col-md-4"><Detail /></div>
         </div>
+        <Dialog
+         modal={false}
+         open={isActive}
+         actions={actions}
+         onRequestClose={()=>this.closeModal()}
+         autoScrollBodyContent={true}
+         >
+         <Detail />
+       </Dialog>
       </div>
     );
   }
@@ -26,7 +48,8 @@ import Detail               from '../details';
 
 function mapStateToProps(state){
   return {
-    menu: state.menu
+    menu: state.menu,
+    isActive: state.isActive
   };
 }
 

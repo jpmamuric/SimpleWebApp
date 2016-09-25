@@ -14,7 +14,8 @@ class Item extends Component {
           className="tile"
           rows={featured ? 2 : 1}
           cols={featured ? 2 : 1}
-          onClick={()=>this.props.getItem(item)}
+          onMouseOver={()=>this.props.getItem(item)}
+          onClick={()=>this.props.setState(true)}
         >
           <img src={url}/>
         </GridTile>
