@@ -1,8 +1,8 @@
-import { IS_ACTIVE } from '../actions/types';
+import { MODAL_IS_ACTIVE } from '../actions/types';
 
 export default (state = false , action) => {
   switch (action.type) {
-    case IS_ACTIVE:
+    case MODAL_IS_ACTIVE:
         return action.payload;
       break;
     default:

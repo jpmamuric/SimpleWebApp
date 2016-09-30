@@ -1,4 +1,9 @@
-import { FETCH_MENU, IS_ACTIVE , SELECT_ITEM } from './types';
+import {
+  FETCH_MENU,
+  MODAL_IS_ACTIVE,
+  SELECT_ITEM,
+  MENU_IS_ACTIVE 
+} from './types';
 
 import menu from '../data/menu';
 
@@ -9,9 +14,16 @@ export function fetchMenu() {
   };
 }
 
-export function setState(isActive) {
+export function setModalState(isActive) {
   return {
-    type: IS_ACTIVE,
+    type: MODAL_IS_ACTIVE,
+    payload: isActive
+  };
+}
+
+export function setMenuState(isActive) {
+  return {
+    type: MENU_IS_ACTIVE,
     payload: isActive
   };
 }

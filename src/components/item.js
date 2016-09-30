@@ -15,7 +15,7 @@ class Item extends Component {
           rows={featured ? 2 : 1}
           cols={featured ? 2 : 1}
           onMouseOver={()=>this.props.getItem(item)}
-          onClick={()=>this.props.setState(true)}
+          onClick={()=>this.props.setModalState(true)}
         >
           <img src={url}/>
         </GridTile>

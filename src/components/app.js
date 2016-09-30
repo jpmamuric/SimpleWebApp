@@ -29,16 +29,12 @@ const inkBarStyle = {
 };
 
  class App extends Component {
-   state = {
-     open: false
-   };
-
    static contextTypes = {
       router: React.PropTypes.object
     }
 
-   componentWillMount() {
-     this.props.fetchMenu();
+  componentWillMount() {
+    this.props.fetchMenu();
    }
 
   routeHome(){
@@ -50,7 +46,7 @@ const inkBarStyle = {
   }
 
   render() {
-    const { menu } = this.props;
+    const { menu, menuIsActive, setMenuState } = this.props;
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
@@ -58,6 +54,7 @@ const inkBarStyle = {
             <AppBar
               title="Pampanga Master Grill"
               iconClassNameRight="muidocs-icon-navigation-expand-more"
+              onLeftIconButtonTouchTap={()=>setMenuState(true)}
               />
 
             <Tabs inkBarStyle={inkBarStyle} contentContainerStyle={{background: '#FFF'}}>
@@ -71,11 +68,11 @@ const inkBarStyle = {
           <Drawer
             docked={false}
             width={450}
-            open={this.state.open}
-            onRequestChange={()=>this.closeSideNav()}
+            open={menuIsActive}
+            onRequestChange={()=>setMenuState(false)}
             >
-            <Link to='/' onClick={()=>this.closeSideNav()}>Home</Link>
-            <Link to='/menu' onClick={()=>this.closeSideNav()}>Menu</Link>
+            <Link to='/' onClick={()=>setMenuState(false)}>Home</Link>
+            <Link to='/menu' onClick={()=>setMenuState(false)}>Menu</Link>
         </Drawer>
         </div>
       </MuiThemeProvider>
@@ -86,7 +83,8 @@ const inkBarStyle = {
 
 function mapStateToProps(state) {
   return {
-    menu: state.menu
+    menu: state.menu,
+    menuIsActive: state.menuIsActive
   };
 }
 

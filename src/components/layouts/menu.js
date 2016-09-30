@@ -14,11 +14,11 @@ import FlatButton from 'material-ui/FlatButton';
   }
 
   closeModal(){
-    this.props.setState(false);
+    this.props.setModalState(false);
   }
 
   render() {
-    const { menu, isActive} = this.props;
+    const { menu, modalIsActive} = this.props;
     const actions = [
       <FlatButton
         label="Cancel"
@@ -30,11 +30,14 @@ import FlatButton from 'material-ui/FlatButton';
       <div>
         <div className='row'>
           <div className="col-md-8"><List  menu={ menu } /></div>
-          <div className="col-md-4"><Detail /></div>
+          <div className="col-md-4">
+            <h2>Fire Grilled for your tastes!</h2>
+            <Detail />
+          </div>
         </div>
         <Dialog
          modal={false}
-         open={isActive}
+         open={modalIsActive}
          actions={actions}
          onRequestClose={()=>this.closeModal()}
          autoScrollBodyContent={true}
@@ -49,7 +52,7 @@ import FlatButton from 'material-ui/FlatButton';
 function mapStateToProps(state){
   return {
     menu: state.menu,
-    isActive: state.isActive
+    modalIsActive: state.modalIsActive
   };
 }
 

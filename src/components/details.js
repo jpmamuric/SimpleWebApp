@@ -10,14 +10,18 @@ class Detail extends Component {
     if (name) {
       return (
         <div>
-          <h2>Fire Grilled for your tastes</h2>
           <h1>{name}</h1>
           <p>{description}</p>
           <Paper zDepth={5} ><img src ={url}/></Paper>
         </div>
       );
     } else {
-      return <h2>Fire Grilled for your tastes</h2>
+      return  (
+        <div>
+          <h3>History:</h3>
+          <h4>Pamanga is known in the filipines for  its unique and quality delicacies on the main island of Luzon.</h4>
+        </div>
+      );
     }
 
   }
