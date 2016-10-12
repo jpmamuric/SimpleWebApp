@@ -26,3 +26,21 @@
 img {
   width: 100%;
 }
+
+.landing-image {
+  background: url('https://photos-2.dropbox.com/t/2/AAAMghAWTkXEATh3nZAywSLNsHjqH9XQQXcuLERRmUCAMQ/12/542838171/jpeg/32x32/1/_/1/2/pmg.jpg/EJjpiawEGKrhBSACKAI/9njM-OdhonYjHB9iJX5ZUFpj123lekt2tNHCP0E8wNk?size_mode=5') no-repeat fixed center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 90vh;
+}
+
+.fade-enter {
+  left: 100px;
+}
+
+.fade-enter-active {
+  left: 0px;
+  transition: .9s ease-in all;
+}

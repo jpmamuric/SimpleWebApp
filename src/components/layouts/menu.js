@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect }          from 'react-redux';
 import * as actions         from '../../actions/index';
-// require("../style/style.css");
 
 import List                 from '../list';
 import Detail               from '../details';
 import Dialog               from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
+
+require("../../../style/style.css");
 
  class Menu extends Component {
   componentWillMount() {
